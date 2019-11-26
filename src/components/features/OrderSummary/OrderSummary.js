@@ -6,11 +6,9 @@ import {calculateTotal} from '../../../utils/calculateTotal.js';
 import {formatPrice} from '../../../utils/formatPrice.js';
 
 const OrderSummary = props => {
-  const fullPrice = calculateTotal(props.tripCost, props.options);
-  const priceFormat = formatPrice(fullPrice);
   return (
     <h2 className={styles.component}>
-      Total<strong>{priceFormat}</strong>
+      Total: {calculateTotal(formatPrice(props.tripCost), props.options)}
     </h2>
   );
 };
