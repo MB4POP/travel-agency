@@ -5,15 +5,19 @@ import OrderOptionDropdown from './OrderOptionDropdown.js';
 import OrderOptionIcons from './OrderOptionIcons.js';
 import OrderOptionCheckboxes from './OrderOptionCheckboxes.js';
 import OrderOptionNumber from './OrderOptionNumber.js';
+import OrderOptionDate from './OrderOptionDate.js';
+import OrderOptionText from './OrderOptionText.js';
 
 const optionTypes = {
   dropdown: OrderOptionDropdown,
   icons: OrderOptionIcons,
   checkboxes: OrderOptionCheckboxes,
   number: OrderOptionNumber,
+  date: OrderOptionDate,
+  text: OrderOptionText,
 };
 
-const OrderOption = ({name, type, ...otherProps}) => {
+const OrderOption = ({id, setOrderOption, name, type, ...otherProps}) => {
   const OptionComponent = optionTypes[type];
   if(!OptionComponent){
     return null;
@@ -22,6 +26,7 @@ const OrderOption = ({name, type, ...otherProps}) => {
       <div className={styles.component}>
         <h3 className={styles.title}>{name}</h3>
         <OptionComponent
+          setOptionValue={value => setOrderOption({ [id]: value })}
           {...otherProps}
         />
       </div>
