@@ -10,7 +10,7 @@ import settings from '../../../data/settings';
 import {formatPrice} from '../../../utils/formatPrice';
 import {calculateTotal} from '../../../utils/calculateTotal';
 
-const sendOrder = (options, tripCost, tripId, tripName,  countryCode) => {
+const sendOrder = (options, tripCost, tripId, tripName, countryCode) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
   const payload = {
@@ -52,7 +52,7 @@ const OrderForm = props => (
     <Col xs={12}>
       <OrderSummary tripCost={props.tripCost} options={props.options} />
     </Col>
-    <Button onClick={() => sendOrder(props.options, props.tripCost)}>Order now!</Button>
+    <Button onClick={() => sendOrder(props.options, props.tripCost, props.tripId, props.tripName, props.countryCode)}>Order now!</Button>
   </Row>
 );
 
