@@ -32,12 +32,17 @@ const sendOrder = (options, tripCost, tripId, tripName, countryCode) => {
     body: JSON.stringify(payload),
   };
 
-  fetch(url, fetchOptions)
-    .then(function(response){
-      return response.json();
-    }).then(function(parsedResponse){
-      console.log('parsedResponse', parsedResponse);
-    });
+  if (!options.contact.length || !options.name.length) {
+    alert('nie ma kontaktu lub nazwy użytkownika');
+  } else {
+    fetch(url, fetchOptions)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+        alert('zamówienie zostało złożone');
+      });
+  }
 };
 
 const OrderForm = props => (
